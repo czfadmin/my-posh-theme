@@ -34,10 +34,10 @@ function Write-Theme {
 
 
     $user = [System.Environment]::UserName
-    # $computer = [System.Environment]::MachineName
+    $computer = [System.Environment]::MachineName
     $path = Get-ShortPath -dir $pwd
     if (Test-NotDefaultUser($user)) {
-        $prompt += Write-Prompt -Object "zfu" -ForegroundColor $sl.Colors.PromptForegroundColor -BackgroundColor $sl.Colors.PromptUserBackgroundColor
+        $prompt += Write-Prompt -Object "$user@$computer" -ForegroundColor $sl.Colors.PromptForegroundColor -BackgroundColor $sl.Colors.PromptUserBackgroundColor
     }
 
     if (Test-VirtualEnv) {
