@@ -37,7 +37,10 @@ function Write-Theme {
     $computer = [System.Environment]::MachineName
     $path = Get-ShortPath -dir $pwd
     if (Test-NotDefaultUser($user)) {
-        $prompt += Write-Prompt -Object "$user@$computer" -ForegroundColor $sl.Colors.PromptForegroundColor -BackgroundColor $sl.Colors.PromptUserBackgroundColor
+        $prompt += Write-Prompt -Object "$user" -ForegroundColor $sl.Colors.PromptForegroundColor -BackgroundColor $sl.Colors.PromptUserBackgroundColor
+        $prompt += Write-Prompt -Object " @ " -ForegroundColor $sl.Colors.CyanGitForegroundColor -BackgroundColor $sl.Colors.PromptUserBackgroundColor
+
+        $prompt += Write-Prompt -Object "$computer" -ForegroundColor $sl.Colors.PromptIndicatorForegroundColor2 -BackgroundColor $sl.Colors.PromptUserBackgroundColor
     }
 
     if (Test-VirtualEnv) {
@@ -83,7 +86,8 @@ function Write-Theme {
         # $prompt += Write-Prompt $sl.PromptSymbols.TimeSymbol -ForegroundColor $sl.Colors.RedPromptForegroundColor
         $prompt += Write-Prompt " $($timeStamp)" -ForegroundColor  $sl.Colors.RedPromptForegroundColor
         $prompt += Write-Prompt $sl.PromptSymbols.SegmentForwardSymbol -ForegroundColor $sl.Colors.RedPromptForegroundColor 
-    }else{
+    }
+    else {
         # $prompt += Write-Prompt $sl.PromptSymbols.TimeSymbol -ForegroundColor $sl.Colors.GreenPromptForegroundColor
         $prompt += Write-Prompt " $($timeStamp)" -ForegroundColor $sl.Colors.GreenPromptForegroundColor 
         $prompt += Write-Prompt $sl.PromptSymbols.SegmentForwardSymbol -ForegroundColor $sl.Colors.GreenPromptForegroundColor 
@@ -100,7 +104,8 @@ function Write-Theme {
         $prompt += Write-Prompt -Object "$($sl.PromptSymbols.PromptTriangleIndicator)"  -ForegroundColor $sl.Colors.RedPromptForegroundColor
         $prompt += ' '
         $prompt
-    }else{
+    }
+    else {
         $prompt += Write-Prompt -Object ([char]::ConvertFromUtf32(0x2514)) -ForegroundColor $sl.Colors.GreenPromptBackgroundColor
         $prompt += Write-Prompt -Object "$($sl.PromptSymbols.PromptTriangleIndicator)"  -ForegroundColor $sl.Colors.GreenPromptForegroundColor
         $prompt += ' '
