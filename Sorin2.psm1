@@ -53,9 +53,12 @@ function Write-Theme {
 }
 
 $sl = $global:ThemeSettings #local settings
+
+$sl.PromptSymbols.FailedCommandSymbol= [char]::ConvertFromUtf32(0x2718)
+$sl.Colors.DriveForegroundColor = [System.ConsoleColor]::Blue
 $sl.PromptSymbols.PromptIndicator = [char]::ConvertFromUtf32(0x276F)
 $sl.Colors.PromptForegroundColor = [ConsoleColor]::White
 $sl.Colors.PromptSymbolColor = [ConsoleColor]::White
-$sl.Colors.PromptHighlightColor = [ConsoleColor]::DarkBlue
+$sl.Colors.PromptHighlightColor = [ConsoleColor]::DarkGreen
 $sl.Colors.WithForegroundColor = [ConsoleColor]::DarkRed
 $sl.Colors.WithBackgroundColor = [ConsoleColor]::Magenta
