@@ -15,7 +15,7 @@ function Write-Theme {
 
     #check for elevated prompt
     If (Test-Administrator) {
-        $prompt += Write-Prompt -Object "$($sl.PromptSymbols.ElevatedSymbol) " -ForegroundColor $sl.Colors.AdminIconForegroundColor
+        $prompt += Write-Prompt -Object $sl.PromptSymbols.ElevatedSymbol -ForegroundColor $sl.Colors.AdminIconForegroundColor
     }
 
     # $user = [System.Environment]::UserName
@@ -62,3 +62,6 @@ $sl.Colors.PromptSymbolColor = [ConsoleColor]::White
 $sl.Colors.PromptHighlightColor = [ConsoleColor]::DarkGreen
 $sl.Colors.WithForegroundColor = [ConsoleColor]::DarkRed
 $sl.Colors.WithBackgroundColor = [ConsoleColor]::Magenta
+$sl.PromptSymbols.ArrawA=[char]::ConvertFromUtf32(0x261b)
+$sl.PromptSymbols.ElevatedSymbol=[char]::ConvertFromUtf32(0x26a1)
+
