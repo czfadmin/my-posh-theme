@@ -18,11 +18,6 @@ function Write-Theme {
         $prompt += Write-Prompt -Object $sl.PromptSymbols.ElevatedSymbol -ForegroundColor $sl.Colors.AdminIconForegroundColor
     }
 
-    # $user = [System.Environment]::UserName
-    # if (Test-NotDefaultUser($user)) {
-    #     $prompt += Write-Prompt -Object "$user " -ForegroundColor $sl.Colors.PromptForegroundColor
-    # }
-
     # Writes the drive portion
     $prompt += Write-Prompt -Object "$(Get-ShortPath -dir $pwd) " -ForegroundColor $sl.Colors.DriveForegroundColor
 
@@ -43,11 +38,7 @@ function Write-Theme {
         $prompt += Write-Prompt -Object "$($with.ToUpper()) " -BackgroundColor $sl.Colors.WithBackgroundColor -ForegroundColor $sl.Colors.WithForegroundColor
     }
     $prompt += Set-Newline
-    # Writes the postfixes to the prompt
-    # $prompt += Write-Prompt -Object $sl.PromptSymbols.PromptIndicator -ForegroundColor $sl.Colors.CommandFailedIconForegroundColor
-    # $prompt += Write-Prompt -Object $sl.PromptSymbols.PromptIndicator -ForegroundColor $sl.Colors.AdminIconForegroundColor
     $prompt += Write-Prompt  -Object "->" -ForegroundColor $sl.Colors.GitNoLocalChangesAndAheadColor
-    # $prompt += Write-Prompt -Object $sl.PromptSymbols.PromptIndicator -ForegroundColor $sl.Colors.GitNoLocalChangesAndAheadColor
     $prompt += ' '
     $prompt
 }
