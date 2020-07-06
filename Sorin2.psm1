@@ -18,14 +18,15 @@ function Write-Theme {
         $prompt += Write-Prompt -Object $sl.PromptSymbols.ElevatedSymbol -ForegroundColor $sl.Colors.AdminIconForegroundColor
     }
 
-    # Writes the drive portion
-    $prompt += Write-Prompt -Object "$(Get-ShortPath -dir $pwd) " -ForegroundColor $sl.Colors.DriveForegroundColor
+   
 
     $status = Get-VCSStatus
     if ($status) {
         $themeInfo = Get-VcsInfo -status ($status)
         # $prompt += Write-Prompt -Object "" -ForegroundColor $sl.Colors.PromptForegroundColor
-        $prompt += Write-Prompt -Object "$($themeInfo.VcInfo) " -ForegroundColor $themeInfo.BackgroundColor
+		$prompt += Write-Prompt -Object "$($themeInfo.VcInfo) " -ForegroundColor $themeInfo.BackgroundColor
+		
+		$prompt += Write-Prompt -Object "@ " -ForegroundColor $sl.Colors.WithForegroundColor
     }
 
     # write virtualenv
@@ -36,9 +37,15 @@ function Write-Theme {
 
     if ($with) {
         $prompt += Write-Prompt -Object "$($with.ToUpper()) " -BackgroundColor $sl.Colors.WithBackgroundColor -ForegroundColor $sl.Colors.WithForegroundColor
-    }
+	}
+
+	 # Writes the drive portion
+	$prompt += Write-Prompt -Object "$(Get-ShortPath -dir $pwd) " -ForegroundColor $sl.Colors.DriveForegroundColor
+
+	$prompt += Write-Prompt -Object "#" -ForegroundColor $themeInfo.BackgroundColor
+	
     $prompt += Set-Newline
-    $prompt += Write-Prompt  -Object "->" -ForegroundColor $sl.Colors.GitNoLocalChangesAndAheadColor
+    $prompt += Write-Prompt  -Object ">>" -ForegroundColor $sl.Colors.GitNoLocalChangesAndAheadColor
     $prompt += ' '
     $prompt
 }
